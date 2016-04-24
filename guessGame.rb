@@ -17,6 +17,8 @@ class Screen
 end
 
 class Game
+  $totalGamePlayed = 0
+  $totalGuess = 0
   def display_greeting
     Console_Screen.cls
     print "\t\t Welcome to the Ruby Number Guessing Game!" +
@@ -39,6 +41,7 @@ class Game
   end
 
   def play_game
+    $totalGamePlayed += 1
     number = generate_number
 
     loop do
@@ -67,13 +70,15 @@ class Game
         print "Your guess is too high! Press enter to continue."
         Console_Screen.pause
       end
-
+      $totalGuess += 1
     end
 
   end
 
   def display_credits
     Console_Screen.cls
+    puts "The Total Number of Game Played #{$totalGamePlayed}"
+    puts "Avg Number of Guess for Total Game #{$totalGuess/$totalGamePlayed}"
     puts "\t\t\Thanks you for playing the number game!!"
   end
 
