@@ -43,8 +43,8 @@ class Game
   def play_game
     $totalGamePlayed += 1
     number = generate_number
-
-    loop do
+    guess = 0;
+    while guess < 10  do
       Console_Screen.cls
       print "\nEnter your guess and press the enter key: "
 
@@ -63,16 +63,16 @@ class Game
         break
       elsif reply < number then
         Console_Screen.cls
-        print "Your guess is too low! your guess should be between #{number-100} and #{number+100} Press enter to continue."
+        print "Your guess is too low! your guess should be between #{number < 100 ? 0 :number-100} and #{number+100} Press enter to continue."
         Console_Screen.pause
       elsif reply > number then
         Console_Screen.cls
-        print "Your guess is too low! your guess should be between #{number-100} and #{number+100} Press enter to continue."
+        print "Your guess is too low! your guess should be between #{number < 100 ? 0 :number-100} and #{number+100} Press enter to continue."
         Console_Screen.pause
       end
-      $totalGuess += 1
+      guess +=1
     end
-
+    $totalGuess += guess
   end
 
   def display_credits
