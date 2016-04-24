@@ -52,14 +52,20 @@ class Game
       reply.chop!
       reply = reply.to_i
 
-      if reply < 1 or reply > 1000 then
+      if (reply < 1 or reply > 1000) and reply != 00000 then
         redo # redo the ciurrent iteration of the loop
+      elsif reply == 00000 then
+        Console_Screen.cls
+        print "The Random value is #{number}"
+        Console_Screen.pause
+        redo
       end
 
       if reply == number then
         Console_Screen.cls
         print "You have guessed the number! Press Enter to continue."
         Console_Screen.pause
+        guess += 1
         break
       elsif reply < number then
         Console_Screen.cls
